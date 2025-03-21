@@ -26,6 +26,12 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage ('uploading artifacts') {
+            steps {
+                echo "uploading artifact to nexus repository"
+                nexusArtifactUploader artifacts: [[artifactId: 'myapp', classifier: '', file: 'target/myapp.war', type: 'war']], credentialsId: 'Nexus', groupId: 'in.krishna', nexusUrl: '54.89.159.155:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Hotstar', version: '8.3.3-SNAPSHOT'
+            }
+        }
         stage ('Deployment') {
             steps {
                 echo "Deploy in tomcat"
