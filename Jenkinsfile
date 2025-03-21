@@ -4,7 +4,8 @@ pipeline {
         stage ('Clone project') {
             steps {
                 echo "Repository cloning"
-                
+                git 'https://github.com/prasad1598/java-maven-project-new.git'
+
             }
         }
     }
