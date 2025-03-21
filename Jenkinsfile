@@ -8,5 +8,23 @@ pipeline {
 
             }
         }
+        stage ('Compile code') {
+            steps {
+                echo "compiling the source code"
+                sh 'mvn compile'
+            }
+        }
+        stage ('Test') {
+            steps {
+                echo "Test the sourcecode"
+                sh 'mvn test'
+            }
+        }
+        stage ('Genarate artifact') {
+            steps {
+                echo "Genarating Artifact files"
+                sh 'mvn clean package'
+            }
+        }
     }
 }
