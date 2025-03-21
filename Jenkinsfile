@@ -25,7 +25,8 @@ pipeline {
                 echo "Genarating Artifact files"
                 sh 'mvn clean package'
             }
-        }stage ('Deployment') {
+        }
+        stage ('Deployment') {
             steps {
                 echo "Deploy in tomcat"
                 deploy adapters: [tomcat9(credentialsId: 'Tomcat', path: '', url: 'http://3.86.109.226:8080/')], contextPath: 'Myapplication', war: '**/*.war'
