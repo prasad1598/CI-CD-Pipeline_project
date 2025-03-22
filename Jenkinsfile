@@ -29,13 +29,13 @@ pipeline {
         stage ('uploading artifacts') {
             steps {
                 echo "uploading artifact to nexus repository"
-                nexusArtifactUploader artifacts: [[artifactId: 'myapp', classifier: '', file: 'target/myapp.war', type: 'war']], credentialsId: 'Nexus', groupId: 'in.krishna', nexusUrl: '54.89.159.155:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Hotstar', version: '8.3.3-SNAPSHOT'
+                nexusArtifactUploader artifacts: [[artifactId: 'Myapplication', classifier: '', file: 'target/Myapplication', type: '.war']], credentialsId: 'Nexus', groupId: 'in.krishna', nexusUrl: '54.172.98.76:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Hotstar', version: '8.3.3-SNAPSHOT'
             }
         }
         stage ('Deployment') {
             steps {
                 echo "Deploy in tomcat"
-                deploy adapters: [tomcat9(credentialsId: 'Tomcat', path: '', url: 'http://3.86.109.226:8080/')], contextPath: 'Myapplication', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'Tomcat', path: '', url: 'http://54.173.64.200:8080/')], contextPath: '/Myapplication', war: '**/*.war'
             }
         }
     }
