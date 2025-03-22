@@ -23,7 +23,8 @@ pipeline {
         stage ('Genarate artifact') {
             steps {
                 echo "Genarating Artifact files"
-                sh 'mvn clean package'
+                sh 'mvn clean'
+                sh 'mvn package'
             }
         }
         stage ('uploading artifacts') {
