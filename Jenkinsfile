@@ -5,7 +5,6 @@ pipeline {
             steps {
                 echo "Repository cloning"
                 git 'https://github.com/prasad1598/java-maven-project-new.git'
-
             }
         }
         stage ('Compile code') {
@@ -30,7 +29,7 @@ pipeline {
         stage ('uploading artifacts') {
             steps {
                 echo "uploading artifact to nexus repository"
-                nexusArtifactUploader artifacts: [[artifactId: 'Myapplication', classifier: '', file: 'target/Myapplication.war', type: 'war']], credentialsId: 'Nexus', groupId: 'in.krishna', nexusUrl: '54.172.98.76:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Hotstar', version: '8.3.3-SNAPSHOT'
+                nexusArtifactUploader artifacts: [[artifactId: 'Myapplication', classifier: '', file: 'target/Myapplication.war', type: '.war']], credentialsId: 'Nexus', groupId: 'in.krishna', nexusUrl: '54.172.98.76:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Hotstar', version: '8.3.3-SNAPSHOT'
             }
         }
         stage ('Deployment') {
